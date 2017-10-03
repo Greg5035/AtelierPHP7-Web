@@ -1,5 +1,17 @@
 <div id ="contenu">
-     <h2>Liste des films</h2>
+    <h2>Liste des films</h2>
+    <?php
+    //session_start();
+    if ($_SESSION != null) {
+        if ($_SESSION["utilConnecte"] == "admin") {
+            ?>
+    <a href="./front_controleur.php?action=ajoute_film"> <input type="button" value="Ajouter"  /></a>  
+            <?php
+        } else {
+            
+        }
+    }
+    ?>
     <table border="1">
         <thead>
             <tr>
@@ -20,5 +32,6 @@
             ?>
         </tbody>
     </table>
+
 </div>
 
