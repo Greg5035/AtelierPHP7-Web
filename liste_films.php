@@ -2,6 +2,7 @@
     <h2>Liste des films</h2>
     <?php
     //session_start();
+    //faire if (isset($_SESSION["utilConnecte"] ....
     if ($_SESSION != null) {
         if ($_SESSION["utilConnecte"] == "admin") {
             ?>
@@ -32,6 +33,6 @@
             ?>
         </tbody>
     </table>
-
+<?php echo   $_SESSION["titres"]?>
 </div>
 

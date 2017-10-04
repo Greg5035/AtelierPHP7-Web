@@ -1,7 +1,7 @@
 <?php
 
 static $films = ["Dracula", "Kung fu Panda", "dora l'exploratrice"];
-
+ session_start();
 @$action = $_REQUEST ["action"];
 $pagecontenu = "";
 switch ($action) {
@@ -9,6 +9,12 @@ switch ($action) {
         //récupère les films : $fims
         //Renvoie à la vue
         $pagecontenu = './liste_films.php';
+        break;
+    case "ajoute_film" :
+        $pagecontenu = './ajoute_film.php';
+        break;
+    case "film_ajoute" :
+        $pagecontenu = './film_ajoute.php';
         break;
     case "liste_series":
         break;
@@ -27,25 +33,25 @@ switch ($action) {
         @$login = $_REQUEST ["login"];
         @$mdp = $_REQUEST ["mdp"];
         if ($login == "admin" && $mdp == "123") {
-            session_start();
+           
             @$_SESSION["utilConnecte"] = $login;
             header("Location: front_controleur.php?action=liste_films");
             exit;
         } else {
             $pagecontenu = './login.php';
+            break;
         }
         break;
     case "logout":
         $pagecontenu = './logout.php';
         break;
-    case "ajoute_film":
-        echo "************";
-        $pagecontenu = './logout.php';
-        break;
+
     default :
         echo "ERREUR : action ionconnue";
         break;
 }
+
+echo $pagecontenu;
 //afficher l page par composition
 include './_HEADER.php';
 include './_MENU.php';
