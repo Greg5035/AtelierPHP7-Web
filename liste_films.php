@@ -25,14 +25,14 @@
             foreach ($films as $film) {
                 ?>
                 <tr>
-                    <td><?php echo $film; ?></td>
-                    <td><a> <input type="submit" value="Supprimer" /></a></td>
+                    <td><?php echo $film["titre"]; ?></td>
+                    <td><a href="./front_controleur.php?action=supprime_film">  <input type="button" value="Supprimer" /></a></td>
                 </tr>
                 <?php
             }
             ?>
         </tbody>
     </table>
-<?php echo   $_SESSION["titres"]?>
+
 </div>
 

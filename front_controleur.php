@@ -1,6 +1,7 @@
 <?php
-
-static $films = ["Dracula", "Kung fu Panda", "dora l'exploratrice"];
+include './lib/lib_db.php';
+//static $films = ["Dracula", "Kung fu Panda", "dora l'exploratrice"];
+$films= listerFilms();
  session_start();
 @$action = $_REQUEST ["action"];
 $pagecontenu = "";
@@ -13,8 +14,11 @@ switch ($action) {
     case "ajoute_film" :
         $pagecontenu = './ajoute_film.php';
         break;
-    case "film_ajoute" :
-        $pagecontenu = './film_ajoute.php';
+    case "film_ajoute_post" :
+        //$pagecontenu = './film_ajoute.php';
+        ajouterFilms($_REQUEST ["titre"]);
+        header("Location: front_controleur.php?action=liste_films");
+        exit;
         break;
     case "liste_series":
         break;
@@ -53,6 +57,7 @@ switch ($action) {
 
 echo $pagecontenu;
 //afficher l page par composition
+
 include './_HEADER.php';
 include './_MENU.php';
 include $pagecontenu;
