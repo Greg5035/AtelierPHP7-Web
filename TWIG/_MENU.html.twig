@@ -1,0 +1,11 @@
+<div>
+<h1>Mon menu</h1>
+<a href="./front_controleur.php?action=liste_films" >Films</a>
+<a href="./front_controleur.php?action=liste_series" >Séries</a>
+{% if utilconnecte == "admin"%}
+     <a href="./front_controleur.php?action=logout" >Logout</a>
+{% else %}    
+    <a href="./front_controleur.php?action=login" >Login</a>
+{% endif %}    
+</div>
+

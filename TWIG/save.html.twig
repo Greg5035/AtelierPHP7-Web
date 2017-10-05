@@ -1,0 +1,11 @@
+{# empty Twig template #}
+<h1>Liste des films2</h1>
+{% for f in films %}
+    {{ f.titre | capitalize }}
+    <br>    
+{% endfor %}
+<br>
+{% for f in films %}
+    {% include 'liste_films.html.twig' with {titre: f.titre, id:f.id } %}
+{% endfor %}
+{% include '_FOOTER.html.twig'%}
