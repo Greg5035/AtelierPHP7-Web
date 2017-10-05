@@ -2,6 +2,10 @@
 
 {% block contenu %}
     <h1>Liste des films</h1>
+    {% if utilconnecte == "admin"%}
+        <a href="./front_controleur.php?action=ajoute_film"> <input type="button" value="Ajouter"  /></a>  
+    {% endif %}    
+    {% include '_PAGINATION.html.twig'%}
     {% for f in films%}
         {% include '_MINIATURE_FILM.html.twig' with {titre: f.titre, id:f.id }%}
         <br>

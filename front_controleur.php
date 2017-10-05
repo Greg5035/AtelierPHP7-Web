@@ -20,10 +20,11 @@ switch ($action) {
         //récupère les films : $fims
         //Renvoie à la vue
         //$pagecontenu = './liste_films.php';
-        echo $twig->load("liste_films.html.twig")->render(["films"=> listerfilms()]);
+        $films = listerFilms(); 
+        echo $twig->load("liste_films.html.twig")->render(["films"=> $films, "utilconnecte"=>@$_SESSION["utilConnecte"], "nbElt"=> count($films)]);
         break;
     case "ajoute_film" :
-        $pagecontenu = './ajoute_film.php';
+        echo $twig->render("ajouter_film.html.twig");
         break;
     case "film_ajoute_post" :
         //$pagecontenu = './film_ajoute.php';
@@ -43,7 +44,7 @@ switch ($action) {
         break;
     case "login":
         //$pagecontenu = './login.php';
-        echo $twig->load("login.html.twig") ->render(["films"=> listerfilms()] );
+        echo $twig->render("login.html.twig");
         break;
     case "login_post":
         @$login = $_REQUEST ["login"];
@@ -53,12 +54,14 @@ switch ($action) {
             header("Location: front_controleur.php?action=liste_films");
             exit;
         } else {
-            echo $twig->load("login.html.twig")->render(["films"=> listerfilms(), "utilconnecte"=>$login]);
+            echo $twig->render("login.html.twig");
             break;
         }
         break;
     case "logout":
-        $pagecontenu = './logout.php';
+        //$pagecontenu = './logout.php';
+        session_destroy();
+        echo $twig->render("logout.html.twig");
         break;
 
     default :

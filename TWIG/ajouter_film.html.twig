@@ -1,0 +1,13 @@
+{% extends '_TEMPLATE.html.twig' %}
+
+{% block contenu %}
+    <h1>Ajoute un film from twig</h1>
+    <form method="POST" action="./front_controleur.php?action=film_ajoute_post">
+        <label>Titre</label>
+        <input name="titre"/>
+        <br>        
+        <input type="submit" value="Ajouter"/>
+    </form>    
+{% endblock%}
+
+
